@@ -1,318 +1,827 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ray Power Solaroof</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ray Power Solaroof</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #0d9a43;
+      --deep-green: #005a22;
+      --soft-green: #dff4e3;
+      --cream: #fffbe9;
+      --orange: #ff7a00;
+      --black: #0e0e0e;
+      --text: #1f1f1f;
+      --muted: #5b5b5b;
+      --border: #d4d4d4;
+      --white: #ffffff;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet">
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
-body{margin:0;font-family:Poppins;background:#f3f3f3}
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #ffffff;
+      color: var(--text);
+    }
 
-/* LOGO */
-.logo{
-font-family:Montserrat;
-font-size:36px;
-font-weight:800;
-font-style:italic;
-color:#1db954;
-text-align:center;
-padding:15px;
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-/* TOP BAR */
-.top-bar{
-background:#eaf7ee;
-display:flex;
-justify-content:space-around;
-padding:15px;
-flex-wrap:wrap;
-text-align:center;
-}
-.top-bar div{max-width:250px}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-.top-green{
-background:#0a8f3c;
-color:white;
-text-align:center;
-padding:8px;
-font-weight:600;
-}
+    .container {
+      width: min(100%, 1024px);
+      margin: 0 auto;
+      background: #fff;
+    }
 
-/* HERO */
-.hero{
-display:flex;
-flex-wrap:wrap;
-}
+    .logo {
+      text-align: center;
+      padding: 18px 16px 10px;
+      color: var(--green);
+      font-style: italic;
+      font-weight: 800;
+      font-size: 42px;
+      line-height: 1;
+      letter-spacing: 0.5px;
+    }
 
-.hero-left{
-flex:1;
-min-width:300px;
-background:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231');
-background-size:cover;
-padding:40px;
-color:white;
-background-color:rgba(0,0,0,0.6);
-background-blend-mode:overlay;
-position:relative;
-}
+    .top-panel {
+      margin: 8px 32px 14px;
+      background: var(--cream);
+      border: 2px solid #cddbc8;
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-/* BIG TEXT */
-.zero{
-font-size:90px;
-font-weight:800;
-color:white;
-line-height:1;
-}
+    .top-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+    }
 
-.bijli{
-font-size:40px;
-font-weight:700;
-color:#ffeb3b;
-}
+    .top-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      min-height: 105px;
+    }
 
-.bill{
-font-size:40px;
-font-weight:700;
-}
+    .top-item + .top-item {
+      border-left: 2px solid #cfd4c8;
+    }
 
-.hero-left p{
-margin-top:15px;
-}
+    .bank-icon {
+      width: 46px;
+      height: 46px;
+      color: var(--green);
+      flex: 0 0 46px;
+    }
 
-/* FORM */
-.hero-right{
-flex:1;
-min-width:300px;
-background:#ff7a00;
-padding:30px;
-}
+    .rupee-badge {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-weight: 700;
+      line-height: 1;
+      flex: 0 0 60px;
+    }
 
-.hero-right input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:5px;
-}
+    .rupee-badge span:first-child {
+      font-size: 22px;
+      margin-bottom: 3px;
+    }
 
-.hero-right button{
-width:100%;
-padding:12px;
-background:black;
-color:white;
-border:none;
-}
+    .top-item p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 600;
+      color: #222;
+    }
 
-/* PLANS */
-.section{text-align:center;padding:40px}
+    .announce {
+      background: var(--deep-green);
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 12px 14px;
+    }
 
-.cards{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-}
+    .hero {
+      display: grid;
+      grid-template-columns: 1.14fr 1fr;
+    }
 
-.card{
-background:white;
-margin:10px;
-padding:15px;
-border-radius:15px;
-width:280px;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
-}
+    .hero-left {
+      position: relative;
+      min-height: 466px;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.34)),
+        url("https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+      padding: 40px 34px;
+      color: #fff;
+      overflow: hidden;
+    }
 
-.card img{
-width:100%;
-height:180px;
-border-radius:10px;
-object-fit:cover;
-}
+    .hero-copy {
+      max-width: 420px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
 
-.best{
-border:2px solid orange;
-position:relative;
-}
+    .bill-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
 
-.best::after{
-content:"BEST CHOICE";
-position:absolute;
-top:10px;
-right:10px;
-background:orange;
-color:white;
-padding:5px;
-font-size:12px;
-}
+    .zero {
+      font-size: 168px;
+      line-height: 0.8;
+      font-weight: 800;
+      color: #fff;
+      -webkit-text-stroke: 4px var(--orange);
+      text-shadow: 0 4px 0 rgba(0, 0, 0, 0.18);
+    }
 
-/* SERVICE */
-.service{
-background:#fff;
-padding:40px;
-text-align:center;
-}
+    .bill-words {
+      padding-top: 10px;
+      line-height: 0.95;
+    }
 
-.icons{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-margin-top:20px;
-}
+    .bill-words .yellow {
+      display: block;
+      color: #ffeb16;
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
 
-.icons div{margin:10px 20px}
+    .bill-words .white {
+      display: block;
+      color: #ffffff;
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
 
-/* FOOTER */
-footer{
-background:#0b2e1f;
-color:white;
-padding:25px;
-text-align:center;
-}
+    .hero-copy p {
+      margin: 10px 0 0;
+      font-size: 21px;
+      line-height: 1.45;
+      font-weight: 600;
+    }
 
-.bottom{
-display:flex;
-justify-content:space-around;
-flex-wrap:wrap;
-margin-bottom:15px;
-}
+    .hero-copy .small {
+      margin-top: 18px;
+      font-size: 18px;
+      font-weight: 500;
+      max-width: 390px;
+    }
 
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25d366;
-color:white;
-padding:15px;
-border-radius:50%;
-}
+    .hero-copy .highlight {
+      color: #ffe600;
+      font-weight: 800;
+    }
 
-/* MOBILE */
-@media(max-width:768px){
-.logo{font-size:26px}
-.zero{font-size:60px}
-.bijli,.bill{font-size:28px}
-}
-</style>
+    .hero-right {
+      background: var(--orange);
+      color: #fff;
+      padding: 34px 30px 26px;
+    }
+
+    .hero-right h2 {
+      margin: 0 0 20px;
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      height: 48px;
+      border: 0;
+      border-radius: 6px;
+      background: #fff;
+      padding: 0 16px;
+      font: inherit;
+      color: #4b4b4b;
+      outline: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      height: 52px;
+      border: 0;
+      border-radius: 6px;
+      background: #000;
+      color: #fff;
+      font: inherit;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .hero-right .note {
+      margin: 10px 0 0;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 14px 20px 0;
+      text-align: center;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 23px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .underline {
+      width: 42px;
+      height: 3px;
+      background: var(--green);
+      border-radius: 50px;
+      margin: 8px auto 0;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding: 18px 42px 6px;
+    }
+
+    .plan-card {
+      position: relative;
+      background: #fff;
+      border: 1px solid #dedede;
+      border-radius: 16px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      padding: 10px 10px 20px;
+    }
+
+    .plan-card.featured {
+      border: 2px solid #ff8a1a;
+    }
+
+    .best-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff7c14;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 0 10px 0 10px;
+    }
+
+    .plan-card img {
+      width: 100%;
+      height: 176px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .plan-card h3 {
+      margin: 10px 0 4px;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .plan-card .price {
+      color: var(--green);
+      font-size: 20px;
+      font-weight: 800;
+      margin: 10px 0 16px;
+    }
+
+    .plan-card .brands {
+      margin: 0;
+      font-size: 15px;
+      color: #404040;
+    }
+
+    .brand-note {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .service-section {
+      padding: 18px 26px 0;
+      text-align: center;
+    }
+
+    .service-section p.lead {
+      margin: 10px auto 0;
+      max-width: 620px;
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 600;
+      color: #2a2a2a;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: start;
+      gap: 0;
+      margin: 18px 42px 0;
+    }
+
+    .service-item {
+      padding: 0 10px;
+      position: relative;
+    }
+
+    .service-item + .service-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 16px;
+      bottom: 16px;
+      width: 1px;
+      border-left: 1px dashed #bcbcbc;
+    }
+
+    .icon-circle {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: #dff4e3;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+
+    .icon-circle svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    .service-item h4 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .service-banner {
+      margin: 18px auto 0;
+      width: min(640px, calc(100% - 80px));
+      background: #e1f2e3;
+      color: #222;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .footer {
+      margin-top: 14px;
+      background: #0b0f0e;
+      color: #fff;
+      padding: 22px 24px 16px;
+      position: relative;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: center;
+      padding: 0 34px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-box + .footer-box {
+      border-left: 1px solid rgba(255, 255, 255, 0.09);
+      padding-left: 28px;
+    }
+
+    .footer-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 54px;
+    }
+
+    .footer-icon svg {
+      width: 28px;
+      height: 28px;
+      color: #fff;
+    }
+
+    .footer-box strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .footer-box span {
+      display: block;
+      font-size: 14px;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .footer-bottom {
+      padding-top: 14px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      color: var(--green);
+      font-style: italic;
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 1.1;
+    }
+
+    .footer-contact {
+      margin-top: 4px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .footer-tagline {
+      margin-top: 2px;
+      color: #f5f5f5;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 18px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #27d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    .whatsapp-float svg {
+      width: 30px;
+      height: 30px;
+      color: #fff;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .plans,
+      .service-grid,
+      .footer-top,
+      .top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .top-item + .top-item,
+      .footer-box + .footer-box {
+        border-left: 0;
+        padding-left: 0;
+      }
+
+      .service-item + .service-item::before {
+        display: none;
+      }
+
+      .logo {
+        font-size: 30px;
+      }
+
+      .top-panel,
+      .plans,
+      .service-grid,
+      .footer-top {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .plans {
+        padding: 18px 14px 6px;
+      }
+
+      .hero-left,
+      .hero-right {
+        min-height: auto;
+      }
+
+      .zero {
+        font-size: 112px;
+        -webkit-text-stroke: 3px var(--orange);
+      }
+
+      .bill-words .yellow,
+      .bill-words .white {
+        font-size: 50px;
+      }
+
+      .hero-copy p {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .logo {
+        padding-top: 14px;
+        font-size: 24px;
+      }
+
+      .announce {
+        font-size: 15px;
+      }
+
+      .hero-left,
+      .hero-right {
+        padding: 22px 18px;
+      }
+
+      .bill-row {
+        gap: 8px;
+      }
+
+      .zero {
+        font-size: 88px;
+      }
+
+      .bill-words .yellow,
+      .bill-words .white {
+        font-size: 36px;
+      }
+
+      .hero-copy p {
+        font-size: 16px;
+      }
+
+      .hero-copy .small {
+        font-size: 15px;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
+    <div class="logo">RAY POWER SOLAROOF ☀</div>
 
-<div class="logo">RAY POWER SOLAROOF ☀</div>
+    <div class="top-panel">
+      <div class="top-grid">
+        <div class="top-item">
+          <svg class="bank-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2 2 7v2h20V7L12 2Zm-7 9h2v7H5v-7Zm4 0h2v7H9v-7Zm4 0h2v7h-2v-7Zm4 0h2v7h-2v-7ZM3 20h18v2H3v-2Z"/>
+          </svg>
+          <p>छत्तीसगढ़ में<br>पीएम सूर्य घर योजना के तहत<br>₹1,08,000 तक Subsidy मिलता है</p>
+        </div>
 
-<div class="top-bar">
-<div>छत्तीसगढ़ में<br><b>₹1,08,000 Subsidy</b></div>
-<div><b>₹0 Installation*</b><br>घर पर सिस्टम</div>
-<div>Bank Finance Available<br><b>No Down Payment</b></div>
-</div>
+        <div class="top-item">
+          <div class="rupee-badge">
+            <span>0</span>
+            <span>रुपये</span>
+          </div>
+          <p>0 रुपये में<br>आपके घर par<br>सोलर सिस्टम लग जाएगा</p>
+        </div>
 
-<div class="top-green">⭐ आज ही फॉर्म भरें और अपने घर को बनाएं बिजली बिल फ्री!</div>
+        <div class="top-item">
+          <svg class="bank-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2 2 7v2h20V7L12 2Zm-7 9h2v7H5v-7Zm4 0h2v7H9v-7Zm4 0h2v7h-2v-7Zm4 0h2v7h-2v-7ZM3 20h18v2H3v-2Z"/>
+          </svg>
+          <p>बैंक फाइनेंस करवा कर दिया जाएगा<br>जिससे आपको अभी एक भी<br>रुपया खर्च नहीं करना पड़ेगा</p>
+        </div>
+      </div>
+      <div class="announce">⭐ आज ही फॉर्म भरें और अपने घर को बनाएं एनर्जी फ्री!</div>
+    </div>
 
-<!-- HERO -->
-<div class="hero">
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-copy">
+          <div class="bill-row">
+            <div class="zero">0</div>
+            <div class="bill-words">
+              <span class="yellow">बिजली</span>
+              <span class="white">बिल ⚡</span>
+            </div>
+          </div>
 
-<div class="hero-left">
+          <p>Starting from ₹1,95,000*</p>
+          <p>PM Suryaghar Subsidy Available</p>
+          <p>Reduce electricity bill up to <span class="highlight">80-90%</span></p>
+          <p class="small">Our top engineer team will visit your site &amp; suggest best solution according to your budget</p>
+        </div>
+      </div>
 
-<div class="zero">0</div>
-<div class="bijli">बिजली ⚡</div>
-<div class="bill">बिल</div>
+      <div class="hero-right">
+        <h2>Get Enquiry</h2>
+        <form>
+          <div class="field">
+            <input type="text" placeholder="Full Name">
+          </div>
+          <div class="field">
+            <input type="tel" placeholder="Mobile Number">
+          </div>
+          <div class="field">
+            <input type="text" placeholder="City / Location">
+          </div>
+          <div class="field">
+            <select>
+              <option>Monthly Electricity Bill (₹)</option>
+              <option>Below ₹2,000</option>
+              <option>₹2,000 - ₹5,000</option>
+              <option>₹5,000 - ₹10,000</option>
+              <option>Above ₹10,000</option>
+            </select>
+          </div>
+          <button class="submit-btn" type="submit">Submit</button>
+        </form>
+        <p class="note">*We will contact you within 24 hours</p>
+      </div>
+    </section>
 
-<p>
-Starting from <b>₹1,95,000*</b><br>
-PM Suryaghar Subsidy Available<br><br>
-<b>Reduce electricity bill up to 80–90%</b>
-</p>
+    <section class="section">
+      <h2 class="section-title">Choose Your Solar Plan (3kW)</h2>
+      <div class="underline"></div>
 
-<p>
-Our engineer team will visit & suggest best solution
-</p>
+      <div class="plans">
+        <article class="plan-card">
+          <img src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?auto=format&fit=crop&w=900&q=80" alt="Essential solar plan">
+          <h3>ESSENTIAL</h3>
+          <div class="price">₹1,85,000*</div>
+          <p class="brands">Loom Solar / Microtek / Luminous</p>
+        </article>
 
-</div>
+        <article class="plan-card">
+          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=900&q=80" alt="Standard solar plan">
+          <h3>STANDARD</h3>
+          <div class="price">₹1,95,000*</div>
+          <p class="brands">Vikram Solar / Servotech / RenewSys</p>
+        </article>
 
-<div class="hero-right">
-<h2 style="color:white;">Get Enquiry</h2>
+        <article class="plan-card featured">
+          <div class="best-tag">BEST CHOICE</div>
+          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=900&q=80" alt="Premium solar plan">
+          <h3>PREMIUM</h3>
+          <div class="price">₹2,15,000*</div>
+          <p class="brands">Waaree / Tata / Adani</p>
+        </article>
+      </div>
 
-<input placeholder="Full Name">
-<input placeholder="Mobile Number">
-<input placeholder="City / Location">
-<input placeholder="Monthly Electricity Bill (₹)">
+      <p class="brand-note">*Brand selection may vary depending on availability, site condition, and customer preference.</p>
+    </section>
 
-<button>Submit</button>
+    <section class="service-section">
+      <h2 class="section-title">Extra Service &amp; Support</h2>
+      <div class="underline"></div>
+      <p class="lead">From PM Suryaghar Yojana subsidy approval to complete installation, our professional managers handle the entire process for you.</p>
 
-<p style="color:white;font-size:12px;">
-*We will contact you within 24 hours
-</p>
-</div>
+      <div class="service-grid">
+        <div class="service-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2a6 6 0 0 1 6 6c0 4.4-6 12-6 12S6 12.4 6 8a6 6 0 0 1 6-6Zm0 8.5A2.5 2.5 0 1 0 12 5a2.5 2.5 0 0 0 0 5.5Z"/>
+              <path d="M3 21c0-2.4 3.9-4 9-4s9 1.6 9 4H3Z"/>
+            </svg>
+          </div>
+          <h4>Site Visit</h4>
+        </div>
 
-</div>
+        <div class="service-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm8 1.5V8h4.5L14 3.5ZM8 12h8v1.8H8V12Zm0 3.6h8v1.8H8v-1.8Zm0-7.2h5v1.8H8V8.4Z"/>
+            </svg>
+          </div>
+          <h4>Documentation</h4>
+        </div>
 
-<!-- PLANS -->
-<div class="section">
-<h2>Choose Your Solar Plan (3kW)</h2>
+        <div class="service-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="m9.55 17.4-4.6-4.6 1.41-1.4 3.19 3.18 8.08-8.08 1.42 1.42-9.5 9.48Z"/>
+              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Z"/>
+            </svg>
+          </div>
+          <h4>Subsidy Approval</h4>
+        </div>
 
-<div class="cards">
+        <div class="service-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="m22.7 19.3-4.9-4.9a6.7 6.7 0 0 0 .8-3.2 6.9 6.9 0 0 0-.4-2.2l-3.3 3.3-3-3 3.3-3.3a6.9 6.9 0 0 0-2.2-.4 6.8 6.8 0 0 0-3.2.8L4.7 1.3 3.3 2.7l4.9 4.9a6.7 6.7 0 0 0-.8 3.2 6.9 6.9 0 0 0 .4 2.2l3.3-3.3 3 3-3.3 3.3a6.9 6.9 0 0 0 2.2.4 6.8 6.8 0 0 0 3.2-.8l4.9 4.9 1.4-1.4Z"/>
+            </svg>
+          </div>
+          <h4>Installation</h4>
+        </div>
+      </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e">
-<h3>ESSENTIAL</h3>
-<p><b>₹1,85,000*</b></p>
-<p>Loom Solar / Microtek / Luminous</p>
-</div>
+      <div class="service-banner">We provide end-to-end support so you don't have to worry about anything.</div>
+    </section>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231">
-<h3>STANDARD</h3>
-<p><b>₹1,95,000*</b></p>
-<p>Vikram Solar / Servotech</p>
-</div>
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="footer-box">
+          <div class="footer-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Save Up to 80-90%</strong>
+            <span>On Electricity Bill</span>
+          </div>
+        </div>
 
-<div class="card best">
-<img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d">
-<h3>PREMIUM</h3>
-<p><b>₹2,15,000*</b></p>
-<p>Waaree / Tata / Adani</p>
-</div>
+        <div class="footer-box">
+          <div class="footer-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3Zm0 4.2 4 1.5v3.2c0 3.7-2.2 7.2-4 8.2-1.8-1-4-4.5-4-8.2V7.7l4-1.5Zm-1 2.8h2v6h-2V9Zm0 7h2v2h-2v-2Z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>25 Years</strong>
+            <span>Performance Warranty</span>
+          </div>
+        </div>
 
-</div>
+        <div class="footer-box">
+          <div class="footer-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2a10 10 0 0 0-10 10v3a3 3 0 0 0 3 3h2v-8H5v5a1 1 0 0 1-1-1v-3a8 8 0 1 1 16 0v3a1 1 0 0 1-1 1h-2v-5h-2v8h4a3 3 0 0 0 3-3v-3A10 10 0 0 0 12 2Z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Lifetime</strong>
+            <span>Service Support</span>
+          </div>
+        </div>
+      </div>
 
-<p style="font-size:12px;">
-*Brand selection may vary depending on availability
-</p>
+      <div class="footer-bottom">
+        <div class="footer-brand">RAY POWER SOLAROOF</div>
+        <div class="footer-contact">📞 7746969000</div>
+        <div class="footer-tagline">Powering Homes. Saving Bills. Protecting Future.</div>
+      </div>
+    </footer>
+  </div>
 
-</div>
-
-<!-- SERVICE -->
-<div class="service">
-<h2>Extra Service & Support</h2>
-
-<p>
-From PM Suryaghar subsidy approval to installation, our team handles everything.
-</p>
-
-<div class="icons">
-<div>📍 Site Visit</div>
-<div>📄 Documentation</div>
-<div>✔ Subsidy Approval</div>
-<div>🔧 Installation</div>
-</div>
-
-</div>
-
-<footer>
-
-<div class="bottom">
-<div>⚡ Save 80–90%</div>
-<div>🛡 20 Years Warranty</div>
-<div>📞 Lifetime Support</div>
-</div>
-
-<p><b>RAY POWER SOLAROOF</b></p>
-<p>📞 7746969000</p>
-
-</footer>
-
-<a class="whatsapp" href="https://wa.me/917746969000">💬</a>
-
+  <a class="whatsapp-float" href="https://wa.me/917746969000" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M19.05 4.94A9.86 9.86 0 0 0 12.03 2a9.96 9.96 0 0 0-8.64 14.94L2 22l5.23-1.37A10 10 0 1 0 19.05 4.94Zm-7.02 15.38a8.3 8.3 0 0 1-4.22-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.3 8.3 0 1 1 6.99 3.85Zm4.56-6.23c-.25-.12-1.47-.72-1.7-.8s-.39-.12-.56.12-.64.8-.78.97-.28.19-.53.06a6.8 6.8 0 0 1-2-1.23 7.47 7.47 0 0 1-1.38-1.72c-.14-.25-.02-.39.1-.51.12-.12.25-.28.37-.42a1.6 1.6 0 0 0 .25-.42.45.45 0 0 0-.02-.43c-.06-.12-.56-1.34-.76-1.83s-.4-.41-.56-.42h-.47a.9.9 0 0 0-.64.3 2.72 2.72 0 0 0-.84 2.02 4.75 4.75 0 0 0 1 2.52 10.92 10.92 0 0 0 4.19 3.7c2.54 1.1 2.54.73 3 .68a2.53 2.53 0 0 0 1.67-1.18 2.05 2.05 0 0 0 .14-1.18c-.06-.1-.23-.16-.48-.28Z"/>
+    </svg>
+  </a>
 </body>
 </html>
