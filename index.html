@@ -8,51 +8,85 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:ital,wght@1,800&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;font-family:'Poppins',sans-serif;background:#f5f7fa}
-
-/* HEADER */
-header{
-display:flex;
-justify-content:center;
-padding:15px;
-background:white;
-box-shadow:0 2px 10px rgba(0,0,0,0.1)
-}
+body{margin:0;font-family:Poppins;background:#f3f3f3}
 
 /* LOGO */
 .logo{
-font-family:'Montserrat',sans-serif;
-font-size:34px;
+font-family:Montserrat;
+font-size:36px;
 font-weight:800;
 font-style:italic;
 color:#1db954;
 text-align:center;
+padding:15px;
+}
+
+/* TOP BAR */
+.top-bar{
+background:#eaf7ee;
+display:flex;
+justify-content:space-around;
+padding:15px;
+flex-wrap:wrap;
+text-align:center;
+}
+.top-bar div{max-width:250px}
+
+.top-green{
+background:#0a8f3c;
+color:white;
+text-align:center;
+padding:8px;
+font-weight:600;
 }
 
 /* HERO */
 .hero{
 display:flex;
 flex-wrap:wrap;
-background:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1500&q=80');
-background-size:cover;
-background-position:center;
 }
 
 .hero-left{
 flex:1;
 min-width:300px;
-color:white;
+background:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231');
+background-size:cover;
 padding:40px;
-background:rgba(0,0,0,0.6);
+color:white;
+background-color:rgba(0,0,0,0.6);
+background-blend-mode:overlay;
+position:relative;
 }
 
-.hero-left h1{font-size:30px}
+/* BIG TEXT */
+.zero{
+font-size:90px;
+font-weight:800;
+color:white;
+line-height:1;
+}
 
+.bijli{
+font-size:40px;
+font-weight:700;
+color:#ffeb3b;
+}
+
+.bill{
+font-size:40px;
+font-weight:700;
+}
+
+.hero-left p{
+margin-top:15px;
+}
+
+/* FORM */
 .hero-right{
 flex:1;
 min-width:300px;
 background:#ff7a00;
-padding:20px;
+padding:30px;
 }
 
 .hero-right input{
@@ -71,8 +105,8 @@ color:white;
 border:none;
 }
 
-/* SECTION */
-.section{padding:40px 15px;text-align:center}
+/* PLANS */
+.section{text-align:center;padding:40px}
 
 .cards{
 display:flex;
@@ -80,30 +114,67 @@ flex-wrap:wrap;
 justify-content:center;
 }
 
-/* CARD */
 .card{
 background:white;
-padding:15px;
 margin:10px;
+padding:15px;
 border-radius:15px;
 width:280px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1)
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
 
 .card img{
 width:100%;
 height:180px;
-object-fit:cover;
 border-radius:10px;
-margin-bottom:10px;
+object-fit:cover;
 }
+
+.best{
+border:2px solid orange;
+position:relative;
+}
+
+.best::after{
+content:"BEST CHOICE";
+position:absolute;
+top:10px;
+right:10px;
+background:orange;
+color:white;
+padding:5px;
+font-size:12px;
+}
+
+/* SERVICE */
+.service{
+background:#fff;
+padding:40px;
+text-align:center;
+}
+
+.icons{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.icons div{margin:10px 20px}
 
 /* FOOTER */
 footer{
-background:#111;
+background:#0b2e1f;
 color:white;
+padding:25px;
 text-align:center;
-padding:20px
+}
+
+.bottom{
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+margin-bottom:15px;
 }
 
 /* WHATSAPP */
@@ -115,28 +186,37 @@ background:#25d366;
 color:white;
 padding:15px;
 border-radius:50%;
-text-decoration:none;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-.hero-left h1{font-size:22px}
 .logo{font-size:26px}
+.zero{font-size:60px}
+.bijli,.bill{font-size:28px}
 }
 </style>
 </head>
 
 <body>
 
-<header>
 <div class="logo">RAY POWER SOLAROOF ☀</div>
-</header>
+
+<div class="top-bar">
+<div>छत्तीसगढ़ में<br><b>₹1,08,000 Subsidy</b></div>
+<div><b>₹0 Installation*</b><br>घर पर सिस्टम</div>
+<div>Bank Finance Available<br><b>No Down Payment</b></div>
+</div>
+
+<div class="top-green">⭐ आज ही फॉर्म भरें और अपने घर को बनाएं बिजली बिल फ्री!</div>
 
 <!-- HERO -->
-<section class="hero">
+<div class="hero">
 
 <div class="hero-left">
-<h1>On-Grid Solar System for Home</h1>
+
+<div class="zero">0</div>
+<div class="bijli">बिजली ⚡</div>
+<div class="bill">बिल</div>
 
 <p>
 Starting from <b>₹1,95,000*</b><br>
@@ -145,49 +225,50 @@ PM Suryaghar Subsidy Available<br><br>
 </p>
 
 <p>
-Our top engineer team will visit your site & suggest best solution according to your budget
+Our engineer team will visit & suggest best solution
 </p>
+
 </div>
 
 <div class="hero-right">
-<h3 style="color:white;">Get Enquiry</h3>
+<h2 style="color:white;">Get Enquiry</h2>
 
-<input type="text" placeholder="Full Name">
-<input type="tel" placeholder="Mobile Number">
-<input type="text" placeholder="City / Location">
-<input type="number" placeholder="Monthly Bill">
+<input placeholder="Full Name">
+<input placeholder="Mobile Number">
+<input placeholder="City / Location">
+<input placeholder="Monthly Electricity Bill (₹)">
 
 <button>Submit</button>
 
-<p style="font-size:12px;color:white;">
+<p style="color:white;font-size:12px;">
 *We will contact you within 24 hours
 </p>
 </div>
 
-</section>
+</div>
 
 <!-- PLANS -->
-<section class="section">
-<h2>Choose Your Solar Plan (1kW)</h2>
+<div class="section">
+<h2>Choose Your Solar Plan (3kW)</h2>
 
 <div class="cards">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1592838064575-70ed626d3a0e">
 <h3>ESSENTIAL</h3>
 <p><b>₹1,85,000*</b></p>
 <p>Loom Solar / Microtek / Luminous</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=80">
+<img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231">
 <h3>STANDARD</h3>
 <p><b>₹1,95,000*</b></p>
-<p>Vikram Solar / Servotech / RenewSys</p>
+<p>Vikram Solar / Servotech</p>
 </div>
 
-<div class="card" style="border:2px solid orange;">
-<img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80">
+<div class="card best">
+<img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d">
 <h3>PREMIUM</h3>
 <p><b>₹2,15,000*</b></p>
 <p>Waaree / Tata / Adani</p>
@@ -195,38 +276,40 @@ Our top engineer team will visit your site & suggest best solution according to 
 
 </div>
 
-<p style="font-size:12px;color:#666;margin-top:15px;">
-*Brand selection may vary depending on availability, site condition, and customer preference.
+<p style="font-size:12px;">
+*Brand selection may vary depending on availability
 </p>
 
-</section>
-
-<!-- EXTRA SERVICE -->
-<section class="section" style="background:#fff;">
-<h2>Extra Service & Support</h2>
-
-<p style="max-width:700px;margin:auto;font-size:16px;line-height:1.6;">
-From <b>PM Suryaghar Yojana subsidy approval</b> to complete installation, 
-our <b>professional managers</b> handle the entire process for you.
-</p>
-
-<div style="margin-top:20px;font-size:15px;">
-✔ Site Visit  
-✔ Documentation  
-✔ Subsidy Approval  
-✔ Installation
 </div>
 
-<p style="margin-top:15px;font-size:13px;color:#666;">
-We provide end-to-end support so you don’t have to worry about anything.
+<!-- SERVICE -->
+<div class="service">
+<h2>Extra Service & Support</h2>
+
+<p>
+From PM Suryaghar subsidy approval to installation, our team handles everything.
 </p>
 
-</section>
+<div class="icons">
+<div>📍 Site Visit</div>
+<div>📄 Documentation</div>
+<div>✔ Subsidy Approval</div>
+<div>🔧 Installation</div>
+</div>
 
-<!-- FOOTER -->
+</div>
+
 <footer>
-<p><b>Ray Power Solaroof</b></p>
+
+<div class="bottom">
+<div>⚡ Save 80–90%</div>
+<div>🛡 20 Years Warranty</div>
+<div>📞 Lifetime Support</div>
+</div>
+
+<p><b>RAY POWER SOLAROOF</b></p>
 <p>📞 7746969000</p>
+
 </footer>
 
 <a class="whatsapp" href="https://wa.me/917746969000">💬</a>
